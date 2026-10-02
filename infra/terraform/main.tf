@@ -27,3 +27,11 @@ provider "aws" {
 resource "aws_s3_bucket" "bronze" {
   bucket = "weather-bronze"
 }
+
+resource "aws_s3_bucket" "silver" {
+  bucket = "weather-silver"
+}
+
+resource "aws_s3_bucket" "gold" {
+  bucket = "weather-gold"
+}
