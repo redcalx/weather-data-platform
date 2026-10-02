@@ -1,5 +1,7 @@
 structure.txt
 node_modules
 .env
-.dockerignore
-Dockerfile
+.serverless
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
