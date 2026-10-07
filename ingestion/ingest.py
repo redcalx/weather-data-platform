@@ -11,7 +11,7 @@ load_dotenv()
 API_KEY = os.environ["OPENWEATHER_API_KEY"]
 API_URL = "https://api.openweathermap.org/data/2.5/weather"
 BUCKET = "weather-bronze"
-CITIES = ["Sao Paulo", "New York", "Tokyo", "Belo Horizonte", "Macapá"]
+CITIES = ["Sao Paulo", "New York", "Tokyo", "Belo Horizonte", "Macapá", "Santiago", "Brasilia"]
 
 s3 = boto3.client(
     "s3", 

@@ -5,3 +5,28 @@ services:
       - "4566:4566"
     environment:
       - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN:-}
+  spark:
+    image: apache/spark:3.5.6
+    profiles: ["tools"]
+    depends_on:
+      - localstack
+    volumes:
+      - ./transform:/app
+    entrypoint:
+      - /opt/spark/bin/spark-submit
+      - --packages
+      - org.apache.hadoop:hadoop-aws:3.3.4
+      - --conf
+      - spark.jars.ivy=/tmp/.ivy2
+      - --conf
+      - spark.hadoop.fs.s3a.endpoint=http://localstack:4566
+      - --conf
+      - spark.hadoop.fs.s3a.access.key=test
+      - --conf
+      - spark.hadoop.fs.s3a.secret.key=test
+      - --conf
+      - spark.hadoop.fs.s3a.path.style.access=true
+      - --conf
+      - spark.hadoop.fs.s3a.connection.ssl.enabled=false
+      - --conf
+      - spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
