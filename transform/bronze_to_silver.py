@@ -1,5 +1,8 @@
 from pyspark.sql import SparkSession, functions as F
 
+# Silencing Spark logs to WARN level to reduce verbosity
+spark.sparkContext.setLogLevel("WARN")
+
 # Create Spark session
 spark = (
     SparkSession.builder.appName("bronze-to-silver")
